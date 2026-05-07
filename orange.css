@@ -1,0 +1,146 @@
+.navbar-default .navbar-toggle .icon-bar{
+	background-color: #feb801
+;
+}
+.main-menu .navbar-default .navbar-nav .active a{
+	color: #feb801
+;
+}
+.main-menu nav li a::after {
+    background: #feb801
+;
+}
+.typer{
+	color: #e75b1e !important;
+}
+.banner-text h2{
+	color: #feb801 !important;
+}
+.banner-text h1{
+	color: #ef371b !important;
+}
+.banner-text p{
+	color: #fff !important;
+}
+.book-btn a{
+	background: #feb801
+;
+	border: 3px solid #feb801
+;
+}
+.book-btn a:hover{
+	border: 3px solid #040000;
+}
+.hvr-underline-from-center::before{
+	background:#040000;
+}
+.block-title{
+	color: #ef371b;
+}
+.item-type-zoom .item-hover:hover::before{
+	background: rgba(231, 91, 30, 0.5);
+}
+.special-box .owl-theme .owl-controls .owl-page.active span{
+	background: #ef371b;
+}
+.offer-item div h3{
+	color: #ef371b;
+}
+.tab-menu .is-active{
+	background: #ef371b;
+}
+.tab-menu .slick-arrow.slick-prev{
+	background: #ef371b url(../../images/back.png) no-repeat center;
+	background-position: 2px 4px;
+}
+.tab-menu .slick-arrow.slick-next{
+	background: #ef371b url(../../images/next.png) no-repeat center;
+	background-position: 7px 4px;
+}
+
+.offer-item .offer-price{
+	border: 1px solid #ef371b;
+}
+.sf-team:hover .text-col{
+	background-color: #ef371b;
+}
+.gal-item a::after{
+	background-color: #505431 rgba(69, 85, 67, 0.75);
+}
+.overlay i:hover{
+	border: 1px solid #505431;
+	color: #505431;
+}
+.blog-btn-v a{
+	background: #e75b1e;
+	border: 3px solid #e75b1e;
+}
+.book-srv a{
+	background: #e75b1e;
+	border: 3px solid #e75b1e;
+}
+
+.panel-pricing .panel-heading{
+	background: #505431;
+}
+.panel-pricing{
+	border: 1px solid #505431;
+}
+.panel-body p strong span{
+	color: #505431;
+}
+.pricing-main .panel-footer a{
+	background: #505431;
+	border: 3px solid #505431;
+}
+.pricing-main .panel-footer a:hover{
+	border: 3px solid #505431;
+}
+
+.reserve-book-btn button{
+	background: #e75b1e;
+	border: 3px solid #e75b1e;
+}
+.reserve-book-btn button:hover a{
+	color:#000000;
+}
+.footer-news form a{
+	background: #c5c831;
+}
+.footer-news form a:hover{
+	border: 2px dotted #c5c831;
+}
+.footer-box-a h3{
+	color: #c5c831;
+}
+.footer-box-b h3{
+	color: #c5c831;
+}
+.footer-box-c h3{
+	color: #c5c831;
+}
+.footer-box-d h3{
+	color: #c5c831;
+}
+.footer-box-c p a:hover{
+	color: #c5c831;
+}
+.footer-box-b ul li a:hover{
+	color: #c5c831;
+}
+
+.footer-box .socials-box a:hover .social-circle-border{
+	color: #e75b1e;
+}
+
+.footer-box-c p i{
+	color: #e75b1e;
+}
+
+.copyright-main{
+	background: #505431;
+}
+
+#color-panel a.panel-button:hover{
+	color: #505431;		
+}
