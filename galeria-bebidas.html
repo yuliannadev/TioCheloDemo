@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0">
+    <title>Bebidas, Frapes & Coctelería - Tio Chelo</title>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link id="changeable-colors" rel="stylesheet" href="css/colors/orange.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="js/modernizer.js"></script>
+    <style>
+        .gallery-section {
+            padding: 120px 0 60px;
+            background-color: #f8f9fa;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .gallery-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1;
+        }
+        
+        .gallery-section .container {
+            position: relative;
+            z-index: 2;
+        }
+        .fondo-hamburguesas { background-image: url('images/FONDOHAMBURGUESASVECTORES.png'); }
+        .fondo-mariscos { background-image: url('images/FONDOESPECIALIDADESDELMARVECTORES.png'); }
+        .fondo-ahogados { background-image: url('images/FONDOAHOGADOSVECTORES.png'); }
+        .fondo-snacks { background-image: url('images/FONDOSNACKSVECTORES.png'); }
+        .fondo-platillos { background-image: url('images/fondo-platillos.jpg'); }
+        .fondo-micheladas { background-image: url('images/FONDOVECTORESMICHELADAS.png'); }
+        .fondo-bebidas { background-image: url('images/FONDO BEBIDAS VECTORES.png'); }
+        .fondo-cervezas { background-image: url('images/fondo-cervezas.jpg'); }
+        .fondo-postres { background-image: url('images/fondo-postres.jpg'); }
+        
+        .back-to-menu { 
+            position: relative;
+            z-index: 2;
+            margin-top: 90px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        
+        .back-to-menu .btn-back {
+            display: inline-flex;
+            align-items: center;
+            background-color: #e75b1e;
+            color: white;
+            font-weight: 700;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 12px 25px;
+            border-radius: 50px;
+            border: 2px solid #e75b1e;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .back-to-menu .btn-back i {
+            margin-right: 10px;
+            font-size: 16px;
+            transition: transform 0.3s ease;
+        }
+        
+        .back-to-menu .btn-back:hover {
+            background-color: transparent;
+            color: #e75b1e;
+            transform: translateX(-5px);
+        }
+        
+        .back-to-menu .btn-back:hover i {
+            transform: translateX(-3px);
+        }
+        
+        .gallery-title {
+            font-family: 'nautilus_pompiliusregular', cursive;
+            font-size: 48px;
+            color: #e75b1e;
+            text-align: center;
+            margin-bottom: 50px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Grid de la galería */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            cursor: pointer;
+            height: 250px;
+            border: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            border-color: #e75b1e;
+            transform: scale(1.02);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-item .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            color: white;
+            padding: 20px 15px 15px;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+        
+        .gallery-item:hover .overlay {
+            transform: translateY(0);
+        }
+        
+        .gallery-item .overlay h4 {
+            margin: 0 0 5px;
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+        }
+        
+        .gallery-item .overlay p {
+            margin: 0;
+            font-size: 14px;
+            color: #e75b1e;
+            font-weight: 500;
+        }
+        
+        /* Modal para ver la imagen ampliada */
+        .gallery-modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.95);
+            text-align: center;
+        }
+        
+        .modal-content {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+            max-width: 90%;
+            max-height: 80%;
+            margin: 0 auto;
+        }
+        
+        .gallery-modal img {
+            max-width: 100%;
+            max-height: 70vh;
+            border-radius: 5px;
+            box-shadow: 0 0 30px rgba(231, 91, 30, 0.3);
+            border: 3px solid #e75b1e;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 30px;
+            right: 50px;
+            color: #f1f1f1;
+            font-size: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            z-index: 10000;
+        }
+        
+        .close-modal:hover {
+            color: #e75b1e;
+            transform: rotate(90deg);
+        }
+        
+        .modal-caption {
+            color: white;
+            font-size: 20px;
+            margin-top: 20px;
+            font-weight: 500;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        /* Contador de imágenes */
+        .gallery-counter {
+            color: white;
+            font-size: 16px;
+            margin-top: 15px;
+            opacity: 0.8;
+        }
+        
+        /* Botones de navegación en el modal */
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+            padding: 20px;
+            transition: 0.3s;
+            z-index: 10000;
+        }
+        
+        .modal-nav.prev {
+            left: 30px;
+        }
+        
+        .modal-nav.next {
+            right: 30px;
+        }
+        
+        .modal-nav:hover {
+            color: #e75b1e;
+            transform: translateY(-50%) scale(1.2);
+        }
+        
+        @media (max-width: 768px) {
+            .gallery-title {
+                font-size: 36px;
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 15px;
+            }
+            .close-modal {
+                top: 20px;
+                right: 20px;
+                font-size: 40px;
+            }
+            .modal-nav {
+                font-size: 30px;
+            }
+            .modal-nav.prev {
+                left: 10px;
+            }
+            .modal-nav.next {
+                right: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrapper">
+    <!-- ===== NAVBAR ===== -->
+    <div id="site-header">
+        <header id="header" class="header-block-top">
+            <div class="container">
+                <div class="row">
+                    <div class="main-menu">
+                        <nav class="navbar navbar-default" id="mainNav">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <div class="logo">
+                                    <a class="navbar-brand js-scroll-trigger logo-header" href="#">
+                                        <img src="images/LOGO.png" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div id="navbar" class="navbar-collapse collapse">
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li><a href="index.html">Inicio</a></li>
+                                    <li><a href="menu.html">Menu</a></li>
+                                    <li><a href="contacto.html">Contacto</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <!-- ===== SECCIÓN DE GALERÍA ===== -->
+    <section class="gallery-section fondo-ahogados">
+        <div class="container">
+            
+            <h2 class="gallery-title">Bebidas, Frapes & Coctelería</h2>
+            
+            <!-- BOTÓN DE REGRESO AL MENÚ -->
+            <div class="back-to-menu">
+                <a href="menu.html" class="btn-back">
+                    <i class="fa fa-arrow-left"></i> Regresar a menú
+                </a>
+            </div>
+            
+            <div class="gallery-grid" id="gallery-grid">
+                <!-- Ítem de galería 1 -->
+                <div class="gallery-item" onclick="abrirModal(0)">
+                    <img src="images/Mojito de frutos rojos.jpg" alt="Mojito de frutos rojos">
+                    <div class="overlay">
+                        <h4>Mojito de frutos rojos</h4>
+                        <p></p>
+                    </div>
+                </div> 
+                <!-- Ítem de galería 2 -->
+                <div class="gallery-item" onclick="abrirModal(1)">
+                    <img src="images/GinTonic.jpg" alt="Gin Tonic">
+                    <div class="overlay">
+                        <h4>Gin Tonic</h4>
+                        <p></p>
+                    </div>
+                </div>
+                <!-- Ítem de galería 3 -->
+                <div class="gallery-item" onclick="abrirModal(2)">
+                    <img src="images/CHERRYSODA.jpg" alt="Cherry Soda">
+                    <div class="overlay">
+                        <h4>Cherry Soda</h4>
+                        <p></p>
+                    </div>
+                </div>
+                <!-- Ítem de galería 4 -->
+                <div class="gallery-item" onclick="abrirModal(3)">
+                    <img src="images/" alt="">
+                    <div class="overlay">
+                        <h4></h4>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <div id="footer" class="footer-box">
+        <div id="copyright" class="copyright-main">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <h6 class="copy-title"> Copyright &copy; 2026 ETHER AUDIOVISUAL <a href="#" target="_blank"></a> </h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-galeria" class="gallery-modal" onclick="cerrarModalExterno(event)">
+        <span class="close-modal" onclick="cerrarModal()">&times;</span>
+        <div class="modal-nav prev" onclick="cambiarImagen(-1)">&#10094;</div>
+        <div class="modal-nav next" onclick="cambiarImagen(1)">&#10095;</div>
+        <div class="modal-content">
+            <img id="modal-imagen" src="" alt="Imagen ampliada">
+            <div id="modal-caption" class="modal-caption"></div>
+            <div id="modal-counter" class="gallery-counter"></div>
+        </div>
+    </div>
+
+    <!-- Scripts necesarios -->
+    <script src="js/all.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/custom.js"></script>
+    
+    <script>
+        // Obtener todos los elementos de la galería
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        let currentIndex = 0;
+        
+        // Array para almacenar la información de cada imagen
+        const images = [];
+        
+        galleryItems.forEach((item, index) => {
+            const img = item.querySelector('img');
+            const title = item.querySelector('.overlay h4') ? item.querySelector('.overlay h4').innerText : '';
+            const description = item.querySelector('.overlay p') ? item.querySelector('.overlay p').innerText : '';
+            
+            images.push({
+                src: img.src,
+                title: title,
+                description: description
+            });
+        });
+
+        // Función para abrir el modal con la imagen seleccionada
+        function abrirModal(index) {
+            currentIndex = index;
+            const modal = document.getElementById('modal-galeria');
+            const modalImg = document.getElementById('modal-imagen');
+            const captionText = document.getElementById('modal-caption');
+            const counterText = document.getElementById('modal-counter');
+            
+            modal.style.display = "block";
+            actualizarImagen();
+        }
+        
+        // Función para actualizar la imagen en el modal
+        function actualizarImagen() {
+            const modalImg = document.getElementById('modal-imagen');
+            const captionText = document.getElementById('modal-caption');
+            const counterText = document.getElementById('modal-counter');
+            
+            modalImg.src = images[currentIndex].src;
+            captionText.innerHTML = `<strong>${images[currentIndex].title}</strong> - ${images[currentIndex].description}`;
+            counterText.innerHTML = `Imagen ${currentIndex + 1} de ${images.length}`;
+        }
+        
+        // Función para cambiar de imagen
+        function cambiarImagen(direccion) {
+            currentIndex = (currentIndex + direccion + images.length) % images.length;
+            actualizarImagen();
+        }
+        
+        // Función para cerrar el modal
+        function cerrarModal() {
+            document.getElementById('modal-galeria').style.display = "none";
+        }
+        
+        // Cerrar modal si se hace clic fuera del contenido
+        function cerrarModalExterno(event) {
+            if (event.target === document.getElementById('modal-galeria')) {
+                cerrarModal();
+            }
+        }
+
+        // Navegación con teclado
+        document.addEventListener('keydown', function(event) {
+            if (document.getElementById('modal-galeria').style.display === "block") {
+                if (event.key === "Escape") {
+                    cerrarModal();
+                } else if (event.key === "ArrowLeft") {
+                    cambiarImagen(-1);
+                } else if (event.key === "ArrowRight") {
+                    cambiarImagen(1);
+                }
+            }
+        });
+    </script>
+</body>
+</div>
+</html>

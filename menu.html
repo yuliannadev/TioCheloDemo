@@ -1,0 +1,2563 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0">
+    <title>Tio Chelo - Valle de Santiago</title>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link id="changeable-colors" rel="stylesheet" href="css/colors/orange.css" />
+    <script src="js/modernizer.js"></script>
+    
+    <!-- ESTILOS PARA EL MENÚ CARTA  -->
+    <style>
+        /* ==========================================================================
+           ESTILOS PARA MENÚ TIPO CARTA  - DENTRO DE SECCIÓN CON FONDO
+           ========================================================================== */
+        
+        /* Ajustes para que el texto sea legible sobre el fondo oscuro */
+        .hamburguesas-section .menu-carta-section {
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            margin: 30px 0;
+            padding: 40px 0;
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .hamburguesas-section .menu-carta-header {
+            text-align: center; 
+            margin-top: 40px;
+            margin-bottom: 30px;
+        }
+        
+        .hamburguesas-section .menu-carta-header h2 {
+            font-family: 'nautilus_pompiliusregular', cursive;
+            font-size: 48px;
+            color: #e75b1e;
+            margin-bottom: 10px;
+            padding-bottom: 15px;
+            position: relative;
+            display: inline-block;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hamburguesas-section .menu-carta-header h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: #e75b1e;
+        }
+        
+        /* --- CONTENEDOR PRINCIPAL PARA CENTRAR Y REDUCIR EL ANCHO --- */
+        .hamburguesas-section .menu-carta-container {
+            max-width: 800px; 
+            margin: 0 auto;    
+            padding: 0 20px;   
+        }
+        
+        .hamburguesas-section .menu-carta-items {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .hamburguesas-section .menu-carta-item {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
+        }
+        
+        .hamburguesas-section .menu-carta-item:last-child {
+            border-bottom: none;
+        }
+        
+        /* --- ESTRUCTURA PARA JUNTAR EL NOMBRE Y EL PRECIO --- */
+        .hamburguesas-section .menu-item-header {
+            display: flex;
+            justify-content: space-between; 
+            align-items: baseline; 
+            margin-bottom: 8px;
+            gap: 15px; 
+        }
+        
+        .hamburguesas-section .menu-item-nombre {
+            font-family: 'Roboto', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+         
+            flex: 1;
+        }
+        
+        .hamburguesas-section .menu-item-precio {
+            font-family: 'Roboto', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: #e75b1e;
+            white-space: nowrap; 
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+        
+        }
+        
+        .hamburguesas-section .menu-item-descripcion {
+            font-family: 'Roboto', sans-serif;
+            font-size: 15px;
+            color: #f0f0f0;
+            line-height: 1.5;
+            font-style: italic;
+            margin: 0;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+        }
+        
+        .hamburguesas-section .menu-separator {
+            text-align: center;
+            margin: 40px 0 20px 0;
+            position: relative;
+        }
+        
+        .hamburguesas-section .menu-separator span {
+            background: #e75b1e;
+            color: white;
+            padding: 8px 25px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        /* ==========================================================================
+   NUEVA ESTRUCTURA PARA LA IMAGEN LATERAL 
+   ========================================================================== */
+.menu-con-imagen {
+    display: flex;
+    align-items:start; 
+    justify-content: center; 
+    gap: 40px; 
+    flex-wrap: wrap; 
+}
+
+.menu-con-imagen .columna-menu {
+    flex: 0 1 auto; 
+    margin: 0; 
+    min-width: 280px;
+}
+
+/* Contenedor para la imagen decorativa */
+.imagen-lateral-menu {
+    flex: 0 1 250px;
+    max-width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; 
+}
+
+.imagen-lateral-menu img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: all 0.3s ease;
+}
+
+/* Responsive: En pantallas medianas, reducimos el ancho de la imagen */
+@media (max-width: 1200px) {
+    .imagen-lateral-menu {
+        flex-basis: 200px;
+        max-width: 180px;
+    }
+}
+
+/* Responsive: En tablets, la imagen se coloca debajo del menú y se centra */
+@media (max-width: 992px) {
+    .menu-con-imagen {
+        gap: 30px;
+    }
+    .imagen-lateral-menu {
+        flex-basis: 220px;
+        max-width: 200px;
+    }
+}
+
+/* Responsive: En móviles, la imagen se ajusta al ancho del contenedor */
+@media (max-width: 768px) {
+    .menu-con-imagen {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .imagen-lateral-menu {
+        flex-basis: auto; 
+        max-width: 100%; 
+        width: 100%;
+        order: 2;
+        margin-top: 10px;
+    }
+    
+    .imagen-lateral-menu img {
+        max-width: 90%; 
+        margin: 0 auto; 
+        display: block; 
+    }
+    
+    /* Para pantallas muy pequeñas */
+    @media (max-width: 480px) {
+        .imagen-lateral-menu img {
+            max-width: 85%; 
+    }
+}
+}
+    
+    /* Posicionar el carrusel más abajo */
+    .special-box {
+        margin-top: 90px;
+    }
+   /* ==========================================================================
+   ESTILOS PARA EL ENLACE "VER GALERÍA" DEBAJO DE LA IMAGEN LATERAL
+   ========================================================================== */
+
+
+.galeria-link-container {
+    margin-top: 20px;
+    width: 100%;
+    text-align: bottom;
+}
+
+.galeria-link {
+    display: inline-block;
+    background-color: #e75b1e;
+    color: white;
+    font-weight: 700;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 12px 25px;
+    border-radius: 50px;
+    border: 2px solid #e75b1e;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    text-decoration: none !important;
+}
+
+.galeria-link:hover {
+    background-color: transparent;
+    color: #e75b1e;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(231, 91, 30, 0.4);
+}
+
+.galeria-link i {
+    margin: 0 5px;
+    font-size: 14px;
+}
+
+/* Ajuste responsive para móviles */
+@media (max-width: 768px) {
+    .galeria-link {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .galeria-link {
+        font-size: 12px;
+        padding: 8px 16px;
+    }
+}
+/* ==========================================================================
+   ESTILOS PARA EL ENLACE "VER GALERÍA" DEBAJO DE LA IMAGEN LATERAL
+   ========================================================================== */
+
+/* Cambiamos la dirección a columna para apilar imagen y texto */
+.imagen-lateral-menu {
+    flex: 0 1 500px;
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+/* Contenedor del enlace debajo de la imagen */
+.galeria-link-container {
+    margin-top: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Estilo del enlace "VER GALERÍA" */
+.galeria-link {
+    display: inline-block;
+    background-color: #e75b1e;
+    color: white;
+    font-weight: 700;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 12px 25px;
+    border-radius: 50px;
+    border: 2px solid #e75b1e;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    text-decoration: none !important;
+}
+
+.galeria-link:hover {
+    background-color: transparent;
+    color: #e75b1e;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(231, 91, 30, 0.4);
+}
+
+.galeria-link i {
+    margin: 0 5px;
+    font-size: 14px;
+}
+
+/* Ajuste responsive para móviles */
+@media (max-width: 768px) {
+    .galeria-link {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .galeria-link {
+        font-size: 12px;
+        padding: 8px 16px;
+    }
+}
+    </style>
+</head>
+
+<body>
+    <div id="loader">
+        <div id="status"></div>
+    </div>
+
+    <div id="site-header">
+        <header id="header" class="header-block-top">
+            <div class="container">
+                <div class="row">
+                    <div class="main-menu">
+                        <nav class="navbar navbar-default" id="mainNav">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <div class="logo">
+                                    <a class="navbar-brand js-scroll-trigger logo-header" href="#">
+                                        <img src="images/LOGO.png" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div id="navbar" class="navbar-collapse collapse">
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li><a href="index.html">Inicio</a></li>
+                                    <li class="active"><a href="menu.html">Menu</a></li>
+                                    <li><a href="contacto.html">Contacto</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <!-- SECCIÓN DE DESTACADOS (CARRUSEL) -->
+    <div id="about" class="special-menu pad-top-100 parallax">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
+                        <h2 class="block-title color-white text-center"></h2>
+                        <h5 class="title-caption text-center"></h5>
+
+                        <!-- Área visible para mostrar la categoría en hover background-color: rgba(0,0,0,0.5); -->
+
+                        <div style="text-align: center; margin: 30px auto; padding: 15px;  border-radius: 10px; max-width: 600px;">
+    <h3 id="categoria-hover-text" style="color: #ef371B; font-size: 45px; font-family: 'nautilus_pompiliusregular'; font-weight:700; margin: 0; padding: 10px; letter-spacing: 2px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Nuestro Menu</h3>
+    <div style="width: 0; height: 3px; background: #e75b1e; margin: 10px auto 0; transition: width 0.3s ease;" id="categoria-hover-line"></div>
+</div>
+           
+                    </div>
+                    <div class="special-box">
+                        <div id="owl-demo">
+                            <!-- Hamburguesas -->
+                            <div class="item item-type-zoom destacado-link" data-categoria="hamburguesas">
+                                <a href="#menu-hamburguesas" class="item-hover destacado-enlace">
+                                    <div class="item-info">
+                                        <div class="headline">
+                                            HAMBURGUESAS
+                                            <div class="line"></div>
+                                            <div class="dit-line"></div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="item-img">
+                                    <img src="images/Oklahoma smash burguer.jpg" alt="Hamburguesas">
+                                </div>
+                            </div>
+                            
+                            <!-- Especialidades del Mar -->
+                            <div class="item item-type-zoom destacado-link" data-categoria="especialidades-mar">
+                                <a href="#menu-especialidades-mar" class="item-hover destacado-enlace">
+                                    <div class="item-info">
+                                        <div class="headline">
+                                            ESPECIALIDADES DEL MAR
+                                            <div class="line"></div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="item-img">
+                                    <img src="images/AguachileTioChelo.jpg" alt="Especialidades del Mar">
+                                </div>
+                            </div>
+                            
+                            <!-- Ahogados, Tacos, Burros, Costras & Chillakillers -->
+                            <div class="item item-type-zoom destacado-link" data-categoria="ahogados">
+                                <a href="#menu-ahogados" class="item-hover destacado-enlace">
+                                    <div class="item-info">
+                                        <div class="headline">
+                                            AHOGADOS, TACOS, BURROS, COSTRAS & CHILLAKILLERS
+                                            <div class="line"></div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="item-img">
+                                    <img src="images/Tacos, ahogados de camarón.jpg" alt="Ahogados y Tacos">
+                                </div>
+                            </div>
+                            
+                            <!-- Alitas, Snack Pack & Otros Snacks -->
+                            <div class="item item-type-zoom destacado-link" data-categoria="snacks">
+                                <a href="#menu-snacks" class="item-hover destacado-enlace">
+                                    <div class="item-info">
+                                        <div class="headline">
+                                            ALITAS, SNACK PACK & OTROS SNACKS
+                                            <div class="line"></div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="item-img">
+                                    <img src="images/Boneless.jpg" alt="Snacks">
+                                </div>
+                            </div>
+                            
+                            <!-- Platillos & Botanas -->
+                            <div class="item item-type-zoom destacado-link" data-categoria="platillos">
+                                <a href="#menu-platillos" class="item-hover destacado-enlace">
+                                    <div class="item-info">
+                                        <div class="headline">
+                                            Platillos & BOTANAS
+                                            <div class="line"></div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="item-img">
+                                    <img src="images/BotanaJardinera.jpg" alt="Platillos y Botanas">
+                                </div>
+                            </div>
+                            
+                            <!-- Micheladas -->
+                            <div class="item item-type-zoom destacado-link" data-categoria="micheladas">
+                                <a href="#menu-micheladas" class="item-hover destacado-enlace">
+                                    <div class="item-info">
+                                        <div class="headline">
+                                            MICHELADAS
+                                            <div class="line"></div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="item-img">
+                                    <img src="images/Micheladadecamaron.jpg" alt="Micheladas">
+                                </div>
+                            </div>
+                            
+                            <!-- Bebidas, Frappes, Coctelería -->
+                            <div class="item item-type-zoom destacado-link" data-categoria="bebidas">
+                                <a href="#menu-bebidas" class="item-hover destacado-enlace">
+                                    <div class="item-info">
+                                        <div class="headline">
+                                            BEBIDAS, FRAPPES, COCTELERÍA
+                                            <div class="line"></div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="item-img">
+                                    <img src="images/CHERRYSODA.jpg" alt="Bebidas">
+                                </div>
+                            </div>
+                            
+                            <!-- Cervezas, Camaronchelas, Clamatos y Charolas -->
+                            <div class="item item-type-zoom destacado-link" data-categoria="cervezas">
+                                <a href="#menu-cervezas" class="item-hover destacado-enlace">
+                                    <div class="item-info">
+                                        <div class="headline">
+                                            CERVEZAS, CAMARONCHELAS, CLAMATITOS Y CHAROLAS
+                                            <div class="line"></div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="item-img">
+                                    <img src="images/cervezap.jpg" alt="Cervezas">
+                                </div>
+                            </div>
+                            
+                            <!-- Postres -->
+                            <div class="item item-type-zoom destacado-link" data-categoria="postres">
+                                <a href="#menu-postres" class="item-hover destacado-enlace">
+                                    <div class="item-info">
+                                        <div class="headline">
+                                            POSTRES
+                                            <div class="line"></div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="item-img">
+                                    <img src="images/POSTRES.jpg" alt="Postres">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECCIÓN DEL MENÚ COMPLETO CON IMAGEN LATERAL -->
+    <div class="hamburguesas-section pad-top-100 pad-bottom-100" id="menu-completo-contenedor" style="display: none;">
+        <div class="container">
+      
+            <!-- Área para mostrar el nombre de la categoría al hacer hover -->
+<div class="categoria-hover-container">
+    <div class="categoria-hover-text" id="categoria-hover-text">NUESTRO MENÚ</div>
+    <div class="categoria-hover-line"></div>
+</div>
+            <!-- Contenedor flexible para el menú y la imagen -->
+            <div class="menu-con-imagen">
+                <!-- ===== COLUMNA DEL MENÚ ===== -->
+                <div class="columna-menu">
+                    <!-- Hamburguesas -->
+                    <section id="menu-hamburguesas" class="menu-carta-section">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="menu-carta-container">
+                                    <div class="menu-carta-header">
+                                        <h2>HAMBURGUESAS</h2>
+                                    </div>
+                                    
+                                    <ul class="menu-carta-items">
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">MONSTER</span>
+                                                <span class="menu-item-precio">$240</span>
+                                            </div>
+                                            <p class="menu-item-descripcion">200 gr de carne de picaña, doble tocino, doble queso, manchego, mega aro de cebolla y nuestro man 100%artesanal.</p>
+                                        </li>
+                                        
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">RIB EYE</span>
+                                                <span class="menu-item-precio">$210</span>
+                                            </div>
+                                            <p class="menu-item-descripcion">150gr, carne Rib-Eye, cebolla caramellizada con pimiento, aderezo de frambuesa, aros de cebolla y queso manchego.</p>
+                                        </li>
+                                        
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">ARRACHERA</span>
+                                                <span class="menu-item-precio">$170</span>
+                                            </div>
+                                            <p class="menu-item-descripcion">150gr de arrachera marinada, tocino y nuestro pan 100% artesanal</p>
+                                        </li>
+                                        
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">Camarón</span>
+                                                <span class="menu-item-precio">175</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"> Camarón a la plancha sobre una costra de queso.</p>
+                                        </li>
+                                        
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">MAR Y TIERRA</span>
+                                                <span class="menu-item-precio">$185</span>
+                                            </div>
+                                            <p class="menu-item-descripcion">Arrachera y camarón a la plancha, cebolla caramelizada, guacamole, vegetales, catsup, mostaza y aderezo chipotle.</p>
+                                        </li>
+                                        
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">POLLO</span>
+                                                <span class="menu-item-precio">$170</span>
+                                            </div>
+                                            <p class="menu-item-descripcion">Medallón de pollo empanizado y tocino.</p>
+                                        </li>
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">CHICKEN BUFFALO</span>
+                                                <span class="menu-item-precio">$175</span>
+                                            </div>
+                                            <p class="menu-item-descripcion">Tenders de pollo empanizado, bañadas en nuestra salsa buffalo, aderezo ranch y aderezo BBQ.</p>
+                                        </li>
+                                         <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">HAWAIANA</span>
+                                                <span class="menu-item-precio">$160</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"> Salchicha, jamón y piña asada.</p>
+                                        </li>
+                                         <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">CHORI BURGER</span>
+                                                <span class="menu-item-precio">$155</span>
+                                            </div>
+                                            <p class="menu-item-descripcion">Medallón con chorizo gourmet 100% carne, huevo frito y tocino.</p>
+                                        </li>
+                                         <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">HOT DOG ARGENTINO</span>
+                                                <span class="menu-item-precio">$155</span>
+                                            </div>
+                                            <p class="menu-item-descripcion">Pan, salchicha argentina, cebolla caramelizada, chimichurri argentino y aderezo chipotle (incluye guarnición de papas a la francesa).</p>
+                                        </li>
+                                         <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">HOT DOG JUMBO SENCILLO</span>
+                                                <span class="menu-item-precio">$135</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                         <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">HOT DOG CON GUARNICIÓN</span>
+                                                <span class="menu-item-precio">$155</span>
+                                            </div>
+                                            <p class="menu-item-descripcion">Asada, queso fundido, piña asada, chorizo, ruffles o doritos y queso tipo nachos.</p>
+                                        </li>
+                                    </ul>
+                                    
+                                    <div class="menu-separator">
+                                        <span>¡Todas nuestras Hamburguesas llevan de base, lechuga, jitomate,cebolla y aderezos (catsup, mostaza y aderezo chipotle) a excepción de la RIB EYE!</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Especialidades del Mar -->
+                    <section id="menu-especialidades-mar" class="menu-carta-section">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="menu-carta-container">
+                                    <div class="menu-carta-header">
+                                        <h2>ESPECIALIDADES DEL MAR</h2>
+                                    </div>
+                                    
+                                    <ul class="menu-carta-items">
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">FILETE EMPANIZADO</span>
+                                                <span class="menu-item-precio">$190</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">FILETE A LA DIABLA</span>
+                                                <span class="menu-item-precio">$210</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">FILETE A LA PLANCHA</span>
+                                                <span class="menu-item-precio">$190</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">CAMARONES EMPANIZADOS</span>
+                                                <span class="menu-item-precio">$245</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">CAMARONES RELLENOS</span>
+                                                <span class="menu-item-precio">$245</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                         <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">CAMARONES A LA DIABLA</span>
+                                                <span class="menu-item-precio">$260</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                         <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">CAMARONES A LA CUCARACHA</span>
+                                                <span class="menu-item-precio">$280</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                         <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">CAMARONES AL MOJO DE AJO</span>
+                                                <span class="menu-item-precio">$260</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">CAMARONES ESTILO ZARANDEADO</span>
+                                                <span class="menu-item-precio">$320</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">CAMARONES AL CHELO</span>
+                                                <span class="menu-item-precio">$295</span>
+                                            </div>
+                                            <p class="menu-item-descripcion">Bañado en una mezcla de chiles, mantequilla y cacahuate.</p>
+                                        </li>
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">CAMARONES AL COCO</span>
+                                                <span class="menu-item-precio">$275</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">PULPO AL AJILLO</span>
+                                                <span class="menu-item-precio">$360</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">PULPO ZARANDEADO</span>
+                                                <span class="menu-item-precio">$520 (en adelante)</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                         <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">CAMARONES A LOS 3 QUESOS</span>
+                                                <span class="menu-item-precio">$295</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                         <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">CAMARONES CAJUN</span>
+                                                <span class="menu-item-precio">$510</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                    </ul>
+
+                                    <!-- Segundo menú dentro de Especialidades del Mar -->
+                                    <div class="menu-carta-header">
+                                        <h2>MARISCOS Y AGUACHILES</h2>
+                                    </div>
+                                    <ul class="menu-carta-items">
+                                        <!-- Ejemplo de ítem adicional -->
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">AGUACHILE DE CAMARÓN</span>
+                                                <span class="menu-item-precio">$225</span>
+                                            </div>
+                                            <p class="menu-item-descripcion">Lo tenemos en rojo, verde y negro.</p>
+                                        </li>
+                                         <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">AGUACHILE TIO CHELO</span>
+                                                <span class="menu-item-precio">$235</span>
+                                            </div>
+                                            <p class="menu-item-descripcion">Combinación de camarones crudos, camarón cocido, pulpo y pescado, cebolla morada, pepino, clamato y marinado con salsa negra especial de la casa.</p>
+                                        </li>
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">AGUACHILE TROPICAL</span>
+                                                <span class="menu-item-precio">$245</span>
+                                            </div>
+                                            <p class="menu-item-descripcion">Camarón crudo, bañado en una salsa de mango y habanero, trozosde mango y piña, pepina y cebolla blanca.</p>
+                                        </li>
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">AGUACHILE A LA PIÑA</span>
+                                                <span class="menu-item-precio">$245</span>
+                                            </div>
+                                            <p class="menu-item-descripcion">Camarón crudo marinado en una salsa de piña asada con habanero, cebolla morada, aguacate y queso philadelphia a las finas hierbas.</p>
+                                        </li>
+                                               <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">AGUACHILE 4 MARES</span>
+                                                <span class="menu-item-precio">$245</span>
+                                            </div>
+                                            <p class="menu-item-descripcion">Camarón crudo marinado en nuestras 4 salsas, verde, rojo, negro y mango habanero.</p>
+                                        </li>
+                                                <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">AGUACHILE CHILE MORITA</span>
+                                                <span class="menu-item-precio">$245</span>
+                                            </div>
+                                            <p class="menu-item-descripcion">Camarón crudo marinado con salsa matcha de chile morita, limón y vinagre bruja, pepinno y aguacate.</p>
+                                        </li>
+                                                <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">AGUACHILE TATEMADO</span>
+                                                <span class="menu-item-precio">$245</span>
+                                            </div>
+                                            <p class="menu-item-descripcion">Camarón crudo marinado en una mezcla de chiles tatemados y salsas negras.</p>
+                                        </li>
+                                                <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">GUACAMOLE DE MARISCOS</span>
+                                                <span class="menu-item-precio">$140</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                                <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">TORTA AHOGADA DE MARLIN</span>
+                                                <span class="menu-item-precio">$130</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                                <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">TORTA AHOGADA DE PULPO</span>
+                                                <span class="menu-item-precio">$140</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">TORRE DE MARISCOS</span>
+                                                <span class="menu-item-precio">$285</span>
+                                            </div>
+                                            <p class="menu-item-descripcion">Camarón crudo, camarón cocido, pulpo, ceviche, atún fresco, pepino, aguacate, cebolla morada, salseado con la salsa de la casa.</p>
+                                        </li>
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">CALDO DE CAMARÓN</span>
+                                                <span class="menu-item-precio">$160</span>
+                                            </div>
+                                            <p class="menu-item-descripcion">Solo fines de semana.</p>
+                                        </li>
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">SOPA DE MARISCOS</span>
+                                                <span class="menu-item-precio">$185</span>
+                                            </div>
+                                            <p class="menu-item-descripcion">Solo fines de semana.</p>
+                                        </li>
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">COMBINADO DE MAR</span>
+                                                <span class="menu-item-precio">$160</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                    </ul>
+
+                                    <div class="menu-carta-header">
+                                        <h2>TACOS</h2>
+                                    </div>
+                                    <ul class="menu-carta-items">
+                                        <!-- Ejemplo de ítem adicional -->
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">Suave de camarón</span>
+                                                <span class="menu-item-precio">$45</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                         <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">GOBERNADOR</span>
+                                                <span class="menu-item-precio">$45</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">PESCADO</span>
+                                                <span class="menu-item-precio">$40</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">BARBACOA DE PULPO</span>
+                                                <span class="menu-item-precio">$48</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                               <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">BARBACOA DE MARLIN</span>
+                                                <span class="menu-item-precio">$48</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                                <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">PULPO ENCEBOLLADO (ORDEN 3 TACOS)</span>
+                                                <span class="menu-item-precio">$190</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                       </li>
+                                    </ul>
+                                    <div class="menu-carta-header">
+                                        <h2>TOSTADAS</h2>
+                                    </div>
+                                    <ul class="menu-carta-items">
+                                        <!-- Ejemplo de ítem adicional -->
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">CAMARÓN</span>
+                                                <span class="menu-item-precio">$75</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                         <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">PULPO</span>
+                                                <span class="menu-item-precio">$80</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">CAMARÓN Y PULPO</span>
+                                                <span class="menu-item-precio">$85</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">CEVICHE DE PESCADO</span>
+                                                <span class="menu-item-precio">$55</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                               <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">AGUACHILE</span>
+                                                <span class="menu-item-precio">$75</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                                <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">MITOTERA</span>
+                                                <span class="menu-item-precio">$165</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                       </li>
+                                    </ul>
+                                    <div class="menu-carta-header">
+                                        <h2>CÓCTELES</h2>
+                                    </div>
+                                    <ul class="menu-carta-items">
+                                        <!-- Ejemplo de ítem adicional -->
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">CAMARÓN</span>
+                                                <span class="menu-item-precio">$75</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                         <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">PULPO</span>
+                                                <span class="menu-item-precio">$80</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">CAMARÓN Y PULPO</span>
+                                                <span class="menu-item-precio">$85</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">CAMPECHANO</span>
+                                                <span class="menu-item-precio">$55</span>
+                                            </div>
+                                            <p class="menu-item-descripcion">(Ceviche o ostión, camarpon y pulpo).</p>
+                                        </li>
+                                               <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">OSTIÓN</span>
+                                                <span class="menu-item-precio">$75</span>
+                                            </div>
+                                            <p class="menu-item-descripcion">(Puedes agregar ostión a tus cocteles por $20 más).</p>
+                                        </li>
+                                              <div class="menu-carta-header">
+                                        <h2>VINAGRETAS</h2>
+                                    </div>
+                                    <ul class="menu-carta-items">
+                                        <!-- Ejemplo de ítem adicional -->
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">A LA VINAGRETA</span>
+                                                <span class="menu-item-precio">$260</span>
+                                            </div>
+                                            <p class="menu-item-descripcion">(Marisco de su elección, cebolla morada, jitomate cherry, aguacate, acietunas y nuestra vinagreta de la casa a base de aciete de oliva y balsamicos).</p>
+                                        </li>
+                                          <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">AL VERDE (lleva camarón crudo)</span>
+                                                <span class="menu-item-precio">$240</span>
+                                            </div>
+                                            <p class="menu-item-descripcion">(Lleva camarón crudo, marinado al momento con limón, sal y vinagre bruja, cebolla morada, pepino, jalapeño y cilantro, con un toque de salsa de anchoas).</p>
+                                        </li>
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">FINAS HIERBAS</span>
+                                                <span class="menu-item-precio">$280</span>
+                                            </div>
+                                            <p class="menu-item-descripcion">(Marisco de su elección alcaparras, acietunas picadas, queso philadelphia a las finas hierbas, cebolla morada, cherries y nuestra salsa balsamica a base de aciete, soya fermentada e inglesa).</p>
+                                        </li>
+                                         <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">AL ESCABACHE</span>
+                                                <span class="menu-item-precio">$245</span>
+                                            </div>
+                                            <p class="menu-item-descripcion">(Marisco de su elección con una vinagreta de acietes, balsamicos, vinagre e inglesa, con un toque de picor de chile habanero y cebolla blanca).</p>
+                                        </li>
+
+                                               <div class="menu-carta-header">
+                                        <h2>PASTAS</h2>
+                                    </div>
+                                    <ul class="menu-carta-items">
+                                        <!-- Ejemplo de ítem adicional -->
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">PASTA ALFREDO</span>
+                                                <span class="menu-item-precio">$170</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                          <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">PASTA A LA MARINERA</span>
+                                                <span class="menu-item-precio">$170</span>
+                                            </div>
+                                            <p class="menu-item-descripcion">(Pasta spagetti en salsa italiana de tomate de la casa salteada en mantequilla y mezcla de mariscos y mejillón con un toque de queso parmesano y perejil fresco).</p>
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Ahogados, Tacos, Burros, Costras & Chillakillers -->
+                    <section id="menu-ahogados" class="menu-carta-section">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="menu-carta-container">
+                                    <div class="menu-carta-header">
+                                        <h2>AHOGADOS, TACOS, BURROS, COSTRAS & CHILLAKILLERS</h2>
+                                    </div>
+                                     <div class="menu-carta-header">
+                                        <h2>AHOGADOS</h2>
+                                    </div>
+                                    
+
+                <!-- Tabla de AHOGADOS basada en la imagen -->
+                <div class="menu-carta-tabla">
+                    <!-- Encabezados de la tabla -->
+                    <div class="menu-tabla-header">
+                        <span class="header-item"></span>
+                        <span class="header-item">CARNITAS</span>
+                        <span class="header-item">BUCHE</span>
+                        <span class="header-item">LENGUA</span>
+                        <span class="header-item">CAMARÓN</span>
+                        <span class="header-item">CHORIZO</span>
+                        <span class="header-item">PANELA</span>
+                    </div>
+                    
+                    <!-- Fila: TORTAS -->
+                    <div class="menu-tabla-fila">
+                        <span class="fila-nombre">TORTAS</span>
+                        <span class="fila-precio">$90</span>
+                        <span class="fila-precio">$95</span>
+                        <span class="fila-precio">$95</span>
+                        <span class="fila-precio">$120</span>
+                        <span class="fila-precio">—</span>
+                        <span class="fila-precio">$95</span>
+                    </div>
+                    
+                    <!-- Fila: TACOS -->
+                    <div class="menu-tabla-fila">
+                        <span class="fila-nombre">TACOS</span>
+                        <span class="fila-precio">$105</span>
+                        <span class="fila-precio">$110</span>
+                        <span class="fila-precio">$110</span>
+                        <span class="fila-precio">$135</span>
+                        <span class="fila-precio">—</span>
+                        <span class="fila-precio">$110</span>
+                    </div>
+                    
+                    <!-- Fila: QUESADILLAS -->
+                    <div class="menu-tabla-fila">
+                        <span class="fila-nombre">QUESADILLAS</span>
+                        <span class="fila-precio">$65</span>
+                        <span class="fila-precio">$70</span>
+                        <span class="fila-precio">$75</span>
+                        <span class="fila-precio">$90</span>
+                        <span class="fila-precio">—</span>
+                        <span class="fila-precio">$70</span>
+                    </div>
+                    
+                    <!-- Fila: MR. BURROS -->
+                    <div class="menu-tabla-fila">
+                        <span class="fila-nombre">MR. BURROS</span>
+                        <span class="fila-precio">$145</span>
+                        <span class="fila-precio">$150</span>
+                        <span class="fila-precio">$155</span>
+                        <span class="fila-precio">$175</span>
+                        <span class="fila-precio">$140</span>
+                        <span class="fila-precio">—</span>
+                    </div>
+                </div>
+
+
+                                    <div class="menu-carta-header">
+                                        <h2>TACOS</h2>
+                                    </div>
+                                    <ul class="menu-carta-items">
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">BLANDOS</span>
+                                                <span class="menu-item-precio">$45</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">ASADA</span>
+                                                <span class="menu-item-precio">$105</span>
+                                            </div>
+                                            <p class="menu-item-descripcion">
+                                                
+                                            </p>
+                                        </li>
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">ARRACHERA</span>
+                                                <span class="menu-item-precio">$155</span>
+                                            </div>
+                                            <p class="menu-item-descripcion">
+                                                
+                                            </p>
+                                        </li>
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">RIB EYE</span>
+                                                <span class="menu-item-precio">$230</span>
+                                            </div>
+                                            <p class="menu-item-descripcion">
+                                                
+                                            </p>
+                                        </li>
+
+                                    </ul>
+
+                                    <div class="menu-carta-header">
+                                        <h2>BURROS</h2>
+                                    </div>
+                                    <ul class="menu-carta-items">
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">ASADA</span>
+                                                <span class="menu-item-precio">$145</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">ARRACHERA</span>
+                                                <span class="menu-item-precio">$175</span>
+                                            </div>
+                                            <p class="menu-item-descripcion">
+                                                
+                                            </p>
+                                        </li>
+                                    
+                                    </ul>
+                                     <div class="menu-carta-header">
+                                        <h2>COSTRAS</h2>
+                                    </div>
+                                    <ul class="menu-carta-items">
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">MAR Y TIERRA</span>
+                                                <span class="menu-item-precio">$145</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">ARRACHERA</span>
+                                                <span class="menu-item-precio">$145</span>
+                                            </div>
+                                            <p class="menu-item-descripcion">
+                                                
+                                            </p>
+                                        </li>
+                                    <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">SOLO CAMARON</span>
+                                                <span class="menu-item-precio">$145</span>
+                                            </div>
+                                            <p class="menu-item-descripcion">
+                                                
+                                            </p>
+                                        </li>
+                                    </ul>
+                                       <div class="menu-carta-header">
+                                        <h2>CHILAKILER'S</h2>
+                                    </div>
+                                    <ul class="menu-carta-items">
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">CHILAKILLER'S</span>
+                                                <span class="menu-item-precio">$85</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        
+                                       
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                   <section id="menu-snacks" class="menu-carta-section">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="menu-carta-container">
+                <div class="menu-carta-header">
+                    <h2>ALITAS, SNACK PACK & OTROS SNACKS</h2>
+                </div>
+                 <div class="menu-carta-header">
+                    <h2>ALITAS</h2>
+                    </div>
+                <!-- Sección de Alitas estilo imagen -->
+                <div class="alitas-container">
+                    <!-- Primera fila: 6 PIEZAS -->
+                    <div class="alitas-item">
+                        <div class="alitas-cantidad">6 PIEZAS</div>
+                        <div class="alitas-precio">$105</div>
+                    </div>
+                    
+                    <!-- Segunda fila: 10 PIEZAS -->
+                    <div class="alitas-item">
+                        <div class="alitas-cantidad">10 PIEZAS</div>
+                        <div class="alitas-precio">$145</div>
+                    </div>
+                    
+                    <!-- Tercera fila: 15 PIEZAS -->
+                    <div class="alitas-item">
+                        <div class="alitas-cantidad">15 PIEZAS</div>
+                        <div class="alitas-precio">$215</div>
+                    </div>
+                    
+                    <!-- Cuarta fila: 20 PIEZAS -->
+                    <div class="alitas-item">
+                        <div class="alitas-cantidad">20 PIEZAS</div>
+                        <div class="alitas-precio">$290</div>
+                    </div>
+                    
+                    <!-- Título SABORES -->
+                    <div class="alitas-sabores-titulo">SABORES:</div>
+                    
+                    <!-- Sección de sabores picantes -->
+                    <div class="alitas-categoria">
+                        <span class="alitas-categoria-titulo">PICANTES</span>
+                        <span class="alitas-categoria-sabores">(BUFFALO, TIO CHELO, EXTRA HOT, BBQ HOT, BBQ MANGO HABANERO, BBQ HABANERO)</span>
+                    </div>
+                    
+                    <!-- Sección de sabores poco picantes -->
+                    <div class="alitas-categoria">
+                        <span class="alitas-categoria-titulo">POCO PICANTES</span>
+                        <span class="alitas-categoria-sabores">(MANGO HOT, PIÑA HOT, BBQ CHIPOTLE, NARANJA CHIPOTLE)</span>
+                    </div>
+                    
+                    <!-- Sección de salsas -->
+                    <div class="alitas-categoria">
+                        <span class="alitas-categoria-titulo">SALSAS</span>
+                        <span class="alitas-categoria-sabores">(BBQ, TAMARINDO, MEZCAL, AJO PARMESANO, LEMON PEPPER LIQUIDO)</span>
+                    </div>
+                    
+                    <!-- Sección de sazonadores -->
+                    <div class="alitas-categoria">
+                        <span class="alitas-categoria-titulo">SAZONADOR</span>
+                        <span class="alitas-categoria-sabores">(LEMON PEPPER, PARMESANO, AJO Y HIERBAS, CHEEDAR, FUEGO)</span>
+                    </div>
+                </div>
+
+                 <div class="menu-carta-header">
+                                        <h2>SNACKS—NACHOS</h2>
+                                    </div>
+                                    <ul class="menu-carta-items">
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">SENCILLOS</span>
+                                                <span class="menu-item-precio">$60</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">CARNITAS</span>
+                                                <span class="menu-item-precio">$90</span>
+                                            </div>
+                                            <p class="menu-item-descripcion">
+                                                
+                                            </p>
+                                        </li>
+                                    <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">CHORIZO</span>
+                                                <span class="menu-item-precio">$85</span>
+                                            </div>
+                                            <p class="menu-item-descripcion">
+                                                
+                                            </p>
+                                        </li>
+                                         <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">SUPREME (ARRACHERA)</span>
+                                                <span class="menu-item-precio">$160</span>
+                                            </div>
+                                            <p class="menu-item-descripcion">
+                                                
+                                            </p>
+                                        </li>
+
+                                    </ul>
+                                       <div class="menu-carta-header">
+                                        <h2>SNACKS—PAPAS</h2>
+                                    </div>
+                                    <ul class="menu-carta-items">
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">NUEVOS SABORES (LEMON PEPPER, LEMON HOT, FUEGO, QUESO, MANTEQUILLA)</span>
+                                                <span class="menu-item-precio">$75</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">CLASICAS</span>
+                                                <span class="menu-item-precio">$65</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                       <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">AJO Y ESPECIALES</span>
+                                                <span class="menu-item-precio">$75</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                         <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">SALCHIPAPAS</span>
+                                                <span class="menu-item-precio">$90</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                         <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">PARMESANO</span>
+                                                <span class="menu-item-precio">$80</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                         <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">PAPANACHOS</span>
+                                                <span class="menu-item-precio">$85</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                         <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">CHORIPAPAS</span>
+                                                <span class="menu-item-precio">$95</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                    </ul>
+                                     <div class="menu-carta-header">
+                                        <h2>SNACKPACK</h2>
+                                    </div>
+                                    <ul class="menu-carta-items">
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">CLASICO</span>
+                                                <span class="menu-item-precio">$275</span>
+                                            </div>
+                                            <p class="menu-item-descripcion">10 alitas, dedos de queso, papas, aros de cebolla, aderezo y botana.</p>
+                                        </li>
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">DOBLE</span>
+                                                <span class="menu-item-precio">$350</span>
+                                            </div>
+                                            <p class="menu-item-descripcion">12 alitas, dedos de queso, papas, aros de cebolla, aderezo y botana.</p>
+                                        </li>
+                                       <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">MASTER</span>
+                                                <span class="menu-item-precio">$450</span>
+                                            </div>
+                                            <p class="menu-item-descripcion">20 alitas, dedos de queso, papas, aros de cebolla, nuggets,aderezo y botana.</p>
+                                        </li>
+                                       
+                                    </ul>
+                                        <div class="menu-carta-header">
+                                        <h2>SNACKS ADDICIONALES</h2>
+                                    </div>
+                                    <ul class="menu-carta-items">
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">PAPAS GAJO</span>
+                                                <span class="menu-item-precio">$80</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">NUGGETS DE POLLO</span>
+                                                <span class="menu-item-precio">$95</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                       <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">DEDOS DE QUESO</span>
+                                                <span class="menu-item-precio">$105</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                       <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">AROS DE CEBOLLA</span>
+                                                <span class="menu-item-precio">$105</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">BONELESS</span>
+                                                <span class="menu-item-precio">$145</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">TENDERS DE POLLO</span>
+                                                <span class="menu-item-precio">$160</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                    </ul>
+             </section>
+
+
+
+                    <!-- Platillos & Botanas -->
+                    <section id="menu-platillos" class="menu-carta-section">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="menu-carta-container">
+                                    <div class="menu-carta-header">
+                                        <h2>PLATILLOS & BOTANAS</h2>
+                                    </div>
+                                    
+                                    <ul class="menu-carta-items">
+                                        <div class="menu-carta-header">
+                                        <h2>OTRAS BOTANAS</h2>
+                                    </div>
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">GUACAMOLE</span>
+                                                <span class="menu-item-precio">$115</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">JARDINERA</span>
+                                                <span class="menu-item-precio">$155</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">OSTION Y CALLO DE ALMEJA</span>
+                                                <span class="menu-item-precio">$110</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">TOSTIBOTANA</span>
+                                                <span class="menu-item-precio">$320</span>
+                                            </div>
+                                            <p class="menu-item-descripcion">(Tostitos, camarón cocido, camarón crudo, pulpo, atún, ostión, callo de almeja,pepino, cebolla mmorada, jitomate bañado con todaslas salsas de la casa).</p>
+                                        </li>
+                                        
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">BOTANA LOCA</span>
+                                                <span class="menu-item-precio">$70</span>
+                                            </div>
+                                            <p class="menu-item-descripcion">(Churritos, cacahuates, orejita, cueros, trozos de cecina, pepino y pico de gallo).</p>
+                                        </li>
+                                    </ul>
+
+                                      <ul class="menu-carta-items">
+                                        <div class="menu-carta-header">
+                                        <h2>OTRAS PLATILLOS</h2>
+                                    </div>
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">ROLLITOS DE CAMARÓN</span>
+                                                <span class="menu-item-precio">$80</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">QUESADILLA DE CHILE RELLENO DE CAMARÓN</span>
+                                                <span class="menu-item-precio">$60</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">ALAMBRE DE MARISCOS</span>
+                                                <span class="menu-item-precio">$165</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">TACOS DORADOS DE CAMARÓN</span>
+                                                <span class="menu-item-precio">$120</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">QUESADILLA DE MARLIN</span>
+                                                <span class="menu-item-precio">$75</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">MEGA QUESADILLA DE CAMARÓN ENCHIPOTLADO</span>
+                                                <span class="menu-item-precio">$140</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">CHICHARRÓN DE RIB EYE</span>
+                                                <span class="menu-item-precio">$210</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">CHICHARRÓN ESTILO NAYARIT</span>
+                                                <span class="menu-item-precio">$245</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Micheladas -->
+                    <section id="menu-micheladas" class="menu-carta-section">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="menu-carta-container">
+                                    <div class="menu-carta-header">
+                                        <h2>MICHELADAS</h2>
+                                    </div>
+                                    
+                                    <ul class="menu-carta-items">
+                                          <div class="menu-carta-header">
+                                        <h2>CLASICAS</h2>
+                                    </div>
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">CHICO</span>
+                                                <span class="menu-item-precio">$45</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">GRANDE</span>
+                                                <span class="menu-item-precio">$85</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        
+                                    <ul class="menu-carta-items">
+                                          <div class="menu-carta-header">
+                                        <h2>CHELADA</h2>
+                                    </ul>
+                                      <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">CHICO</span>
+                                                <span class="menu-item-precio">$35</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">GRANDE</span>
+                                                <span class="menu-item-precio">$75</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                         <ul class="menu-carta-items">
+                                          <div class="menu-carta-header">
+                                        <h2>SABORES</h2>
+                                    </ul>
+                                          <ul class="menu-carta-items">
+                                          <div class="menu-carta-header">
+                                        <h2>MANGO, TAMARINDO</h2>
+                                    </ul>
+                                       <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">CHICO</span>
+                                                <span class="menu-item-precio">$45</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">GRANDE</span>
+                                                <span class="menu-item-precio">$90</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                    </ul>
+                                         <ul class="menu-carta-items">
+                                          <div class="menu-carta-header">
+                                        <h2>CAMARON</h2>
+                                    </ul>
+                                       <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">CHICO</span>
+                                                <span class="menu-item-precio">$75</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">GRANDE</span>
+                                                <span class="menu-item-precio">$140</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                    <ul class="menu-carta-items">
+                                          <div class="menu-carta-header">
+                                        <h2>PULPO</h2>
+                                    </ul>
+                                       <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">CHICO</span>
+                                                <span class="menu-item-precio">$75</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">GRANDE</span>
+                                                <span class="menu-item-precio">$140</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        <ul class="menu-carta-items">
+                                          <div class="menu-carta-header">
+                                        <h2>FRESA, CHAMOY, PIÑA</h2>
+                                    </ul>
+                                       <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">CHICO</span>
+                                                <span class="menu-item-precio">$45</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">GRANDE</span>
+                                                <span class="menu-item-precio">$90</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        <ul class="menu-carta-items">
+                                          <div class="menu-carta-header">
+                                        <h2>COMBINADA(Camarón y pulpo)</h2>
+                                    </ul>
+                                       <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">CHICO</span>
+                                                <span class="menu-item-precio">$85</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">GRANDE</span>
+                                                <span class="menu-item-precio">$150</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        <ul class="menu-carta-items">
+                                          <div class="menu-carta-header">
+                                        <h2>ESPECIAL</h2>
+                                    </ul>
+                                       <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">CHICO</span>
+                                                <span class="menu-item-precio">$80</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">GRANDE</span>
+                                                <span class="menu-item-precio">$160</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                         <ul class="menu-carta-items">
+                                          <div class="menu-carta-header">
+                                        <h2>ADDICIONALES</h2>
+                                    </ul>
+                                      <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">GOMICHELA</span>
+                                                <span class="menu-item-precio">$125</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">MICHELOCA</span>
+                                                <span class="menu-item-precio">$712</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                  
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">MICHELADA PREPARADA</span>
+                                                <span class="menu-item-precio">$255</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                          
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">TARRO MICHELADA</span>
+                                                <span class="menu-item-precio">$25</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                            
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">LEÓN ROJO</span>
+                                                <span class="menu-item-precio">$35</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Bebidas, Frappes, Coctelería -->
+                    <section id="menu-bebidas" class="menu-carta-section">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="menu-carta-container">
+                                    <div class="menu-carta-header">
+                                        <h2>BEBIDAS, FRAPPES & COCTELERÍA</h2>
+                                    </div>
+                                    
+                                    <ul class="menu-carta-items">
+                                        <div class="menu-carta-header">
+                                        <h2>SIN ALCOHOL</h2>
+                                    </div>
+                                    
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">HEINEKEN 0.0 250ML</span>
+                                                <span class="menu-item-precio">$45</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">TECATE 0.0 355ML</span>
+                                                <span class="menu-item-precio">$35</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                       <div class="menu-carta-header">
+                                        <h2>PARA REFRESCAR</h2>
+                                    </div>
+                                    <div class="menu-carta-header">
+                                        <h2>LIMONADA Y/O NARANJADA</h2>
+                                    </div>
+                                    
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">VASO</span>
+                                                <span class="menu-item-precio">$60</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">JARRA</span>
+                                                <span class="menu-item-precio">$120</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                         <div class="menu-carta-header">
+                                        <h2>RUSAS</h2>
+                                    </div>
+                                    
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">VASO</span>
+                                                <span class="menu-item-precio">$55</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">JARRA</span>
+                                                <span class="menu-item-precio">$110</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                             <div class="menu-carta-header">
+                                        <h2>AGUA FRESCA (DEL DÍA)</h2>
+                                    </div>
+                                    
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">VASO</span>
+                                                <span class="menu-item-precio">$60</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">JARRA</span>
+                                                <span class="menu-item-precio">$130</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                           <div class="menu-carta-header">
+                                        <h2>REFRESCO</h2>
+                                    </div>
+                                    
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">En general</span>
+                                                <span class="menu-item-precio">$35</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                           <div class="menu-carta-header">
+                                        <h2>COCTELERÍA S/A</h2>
+                                    </div>
+                                    
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">MOJITOS
+                                                </span>
+                                                <span class="menu-item-precio">$95</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                         
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">CANTARITOS
+                                                </span>
+                                                <span class="menu-item-precio">$75</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                         
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">PIÑA COLADA
+                                                </span>
+                                                <span class="menu-item-precio">$85</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                         
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">MARGARITAS
+                                                </span>
+                                                <span class="menu-item-precio">$95</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                         
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">FRESA COLADA
+                                                </span>
+                                                <span class="menu-item-precio">$85</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                         
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">CONGA
+                                                </span>
+                                                <span class="menu-item-precio">$70</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                         
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">BOMBA CHELA
+                                                </span>
+                                                <span class="menu-item-precio">$115</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                         <div class="menu-carta-header">
+                                        <h2>FRAPPES Y SMOOTHIES</h2>
+                                    </div>
+                                    
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">FRAPES CLASICOS
+                                                </span>
+                                                <span class="menu-item-precio">$85</span>
+                                            </div>
+                                            <p class="menu-item-descripcion">Capuccino, Moka, Vainilla.</p>
+                                        </li>
+                                         
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">FRAPES ESPECIALES
+                                                </span>
+                                                <span class="menu-item-precio">$95</span>
+                                            </div>
+                                            <p class="menu-item-descripcion">Cajeta, Oreo, Mazapan, Chocolate Blanco.</p>
+                                        </li>
+                                              <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">SODAS ITALIANAS
+                                                </span>
+                                                <span class="menu-item-precio"></span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                         
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Cervezas, Camaronchelas, Clamatos y Charolas -->
+                    <section id="menu-cervezas" class="menu-carta-section">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="menu-carta-container">
+                                    <div class="menu-carta-header">
+                                        <h2>CERVEZAS, CAMARONCHELAS, CLAMATITOS Y CHAROLAS</h2>
+                                    </div>
+                                    <div class="menu-carta-header">
+                                        <h2>CERVEZAS</h2>
+                                    </div>
+                                    <ul class="menu-carta-items">
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">HEINEKEN 355 ML</span>
+                                                <span class="menu-item-precio">$48</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">AMSTEL ULTRA 355ML</span>
+                                                <span class="menu-item-precio">$48</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">MILLER HIGH LIFE 355ML</span>
+                                                <span class="menu-item-precio">$48</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">BOHEMIA 355ML</span>
+                                                <span class="menu-item-precio">$48</span>
+                                            </div>
+                                            <p class="menu-item-descripcion">Pilsner/Vienna/Weizen/Cristal</p>
+                                        </li>
+                                        
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">DOS EQUIS 355ML</span>
+                                                <span class="menu-item-precio">$35</span>
+                                            </div>
+                                            <p class="menu-item-descripcion">Lager/Ambar</p>
+                                        </li>
+                                         <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">INDIO 355ML</span>
+                                                <span class="menu-item-precio">$35</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                         <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">TECATE 325ML</span>
+                                                <span class="menu-item-precio">$35</span>
+                                            </div>
+                                            <p class="menu-item-descripcion">Original/Light</p>
+                                        </li>
+                                         <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">CARTA BLANCA</span>
+                                                <span class="menu-item-precio">$35</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        <div class="menu-carta-header">
+                                        <h2>CAMARON CHELAS</h2>
+                                    </div>
+                                    <ul class="menu-carta-items">
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">TECATE, DOS EQUIS LAGER, INDIO, CARTA BLANCA</span>
+                                                <span class="menu-item-precio">$215</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                         <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">BOHEMIAS, HEINEKEN, ULTRA, DOS  EQUIS ULTRA, COORS LIGHT</span>
+                                                <span class="menu-item-precio">$230</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        <div class="menu-carta-header">
+                                        <h2>CLAMATITOS</h2>
+                                    </div>
+                                    <ul class="menu-carta-items">
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">CAMARÓN</span>
+                                                <span class="menu-item-precio">$85</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                         <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">PULPO</span>
+                                                <span class="menu-item-precio">$98</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">CUERITOS</span>
+                                                <span class="menu-item-precio">$70</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">OREJITAS</span>
+                                                <span class="menu-item-precio">$80</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        <div class="menu-carta-header">
+                                        <h2>CHAROLAS</h2>
+                                    </div>
+                                    <ul class="menu-carta-items">
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">SIX DE MARISCOS</span>
+                                                <span class="menu-item-precio">$870</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Postres -->
+                    <section id="menu-postres" class="menu-carta-section">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="menu-carta-container">
+                                    <div class="menu-carta-header">
+                                        <h2>POSTRES</h2>
+                                    </div>
+                                    
+                                    <ul class="menu-carta-items">
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">CHEESECAKE DE ZARZAMORA</span>
+                                                <span class="menu-item-precio">$85</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">PASTEL DE ZANAHORIA</span>
+                                                <span class="menu-item-precio">$80</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">STRUDEL DE MANZANA</span>
+                                                <span class="menu-item-precio">$70</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">CHOCOFLAN</span>
+                                                <span class="menu-item-precio">$70</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                        <li class="menu-carta-item">
+                                            <div class="menu-item-header">
+                                                <span class="menu-item-nombre">PAY DE LIMÓN</span>
+                                                <span class="menu-item-precio">$75</span>
+                                            </div>
+                                            <p class="menu-item-descripcion"></p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div> <!-- Fin columna-menu -->
+
+                <!-- ===== COLUMNA DE LA IMAGEN ===== -->
+                <div class="imagen-lateral-menu">
+               
+                    <img src="/images/RECURSO PAGINA.png" alt="Imagen decorativa del menú">
+                  
+                    <div class="galeria-link-container">
+        <a href="#" id="link-ver-galeria" class="galeria-link">
+            <i class="fa fa-camera" aria-hidden="true"></i> VER GALERÍA 
+            <i class="fa fa-arrow-right" aria-hidden="true"></i>
+        </a>
+    </div>
+                </div>
+            </div> <!-- Fin menu-con-imagen -->
+            
+        </div> <!-- Fin container -->
+    </div> <!-- Fin hamburguesas-section -->
+
+    <!-- Footer -->
+    <div id="footer" class="footer-box">
+        <div id="copyright" class="copyright-main">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <h6 class="copy-title"> Copyright &copy; 2026 ETHER AUDIOVISUAL <a href="#" target="_blank"></a> </h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="#" class="scrollup" style="display: none;">Scroll</a>
+
+    <script src="js/all.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/custom.js"></script>
+    
+    <!-- Script de inicialización (opcional, si quieres que la imagen cargue al seleccionar) -->
+    <script>
+    (function($) {
+        "use strict";
+        
+        // Función para ocultar todas las secciones de menú
+        function ocultarTodasLasSecciones() {
+            $('.menu-carta-section').hide();
+        }
+        
+        // Función para mostrar una sección específica
+        function mostrarSeccion(idSeccion) {
+            // MOSTRAR TODO EL CONTENEDOR DEL MENÚ (FONDO + TÍTULO + SECCIONES)
+            $('#menu-completo-contenedor').fadeIn(600);
+            
+            ocultarTodasLasSecciones();
+            
+            // Mostrar la sección seleccionada
+            $(idSeccion).fadeIn(600);
+            
+        }
+        
+        // Al cargar la página
+        $(document).ready(function() {
+            // Ocultar todo el contenedor del menú al inicio
+            $('#menu-completo-contenedor').hide();
+            
+            // Configurar los enlaces de los destacados
+            $('.destacado-enlace').on('click', function(e) {
+                e.preventDefault();
+                
+                // Obtener el href del enlace (ej: #menu-hamburguesas)
+                var destino = $(this).attr('href');
+                
+                // Mostrar la sección correspondiente
+                mostrarSeccion(destino);
+            });
+            
+            // Si viene de un enlace directo (con hash en la URL)
+            if(window.location.hash) {
+                var hash = window.location.hash;
+                if($(hash).length) {
+                    mostrarSeccion(hash);
+                }
+            }
+        });
+        
+    })(jQuery);
+    </script>
+<script>
+(function($) {
+    "use strict";
+    
+    function ocultarTodasLasSecciones() {
+        $('.menu-carta-section').hide();
+    }
+    function mostrarSeccion(idSeccion) {
+        $('#menu-completo-contenedor').fadeIn(600);
+        
+        ocultarTodasLasSecciones();
+        
+        $(idSeccion).fadeIn(600);
+        
+        var nuevaImagenFondo = '';
+        var nuevaImagenLateral = '';
+        var nombreCategoria = ''; 
+        
+        switch (idSeccion) {
+            case '#menu-hamburguesas':
+                nuevaImagenFondo = 'url("images/FONDOHAMBURGUESASVECTORES.png")'; 
+                nuevaImagenLateral = 'images/RECURSO PAGINA.png';
+                nombreCategoria = 'HAMBURGUESAS';
+                break;
+            case '#menu-especialidades-mar':
+                nuevaImagenFondo = 'url("images/FONDOESPECIALIDADESDELMARVECTORES.png")'; 
+                nuevaImagenLateral = 'images/Recurso especialidades del mar.png';
+                nombreCategoria = 'ESPECIALIDADES DEL MAR';
+                break;
+            case '#menu-ahogados':
+                nuevaImagenFondo = 'url("images/FONDOAHOGADOSVECTORES.png")'; 
+                nuevaImagenLateral = 'images/CIRCULOAHOGADOS.png';
+                nombreCategoria = 'AHOGADOS, TACOS, BURROS, COSTRAS & CHILLAKILLERS';
+                break;
+            case '#menu-snacks':
+                nuevaImagenFondo = 'url("images/FONDOSNACKSVECTORES.png")'; 
+                nuevaImagenLateral = 'images/Recurso snacks.png';
+                nombreCategoria = 'ALITAS, SNACK PACK & OTROS SNACKS';
+                break;
+            case '#menu-platillos':
+                nuevaImagenFondo = 'url("images/FONDOOTROSPLATILLOSVECTORES.png")'; 
+                nuevaImagenLateral = 'images/CIRCULOBOTANAS.png';
+                nombreCategoria = 'PLATILLOS & BOTANAS';
+                break;
+            case '#menu-micheladas':
+                nuevaImagenFondo = 'url("images/FONDOVECTORESMICHELADAS.png")'; 
+                nuevaImagenLateral = 'images/CIRCULOMICHELADAS.png';
+                nombreCategoria = 'MICHELADAS';
+                break;
+            case '#menu-bebidas':
+                nuevaImagenFondo = 'url("images/FONDOVECTORESFRAPPES.png")';
+                nuevaImagenLateral = 'images/CIRCULOBEBIDASYFRAPPES.png';
+                nombreCategoria = 'BEBIDAS, FRAPPES & COCTELERÍA';
+                break;
+            case '#menu-cervezas':
+                nuevaImagenFondo = 'url("images/FONDOCERVEZAVECTORES.png")'; 
+                nuevaImagenLateral = 'images/CIRCULOCERVEZAS.png';
+                nombreCategoria = 'CERVEZAS, CAMARONCHELAS, CLAMATITOS Y CHAROLAS';
+                break;
+            case '#menu-postres':
+                nuevaImagenFondo = 'url("images/FONDOPOSTRESVECTORES.png")';
+                nuevaImagenLateral = 'images/CIRCULOPOSTRES.png';
+                nombreCategoria = 'POSTRES';
+                break;
+            default:
+                nuevaImagenFondo = 'url("images/special_menu_bg.jpg")';
+                nuevaImagenLateral = 'images/lateral-default.jpg';
+                nombreCategoria = 'NUESTRO MENÚ';
+        }
+        
+        $('#menu-completo-contenedor').css('background-image', nuevaImagenFondo);
+      
+        if ($('.imagen-lateral-menu img').length) {
+            $('.imagen-lateral-menu img').attr('src', nuevaImagenLateral);
+        }
+        
+       
+        $('#categoria-hover-text').text(nombreCategoria);
+    }
+    
+    $(document).ready(function() {
+        $('#menu-completo-contenedor').hide();
+        
+        $('.destacado-enlace').on('click', function(e) {
+            e.preventDefault();
+            
+            var destino = $(this).attr('href');
+            
+            mostrarSeccion(destino);
+            
+            $('html, body').animate({
+                scrollTop: $('#menu-completo-contenedor').offset().top
+            }, 800);
+        });
+        
+        $('.destacado-link').hover(
+            function() {
+    
+                var categoria = $(this).data('categoria');
+                var textoAMostrar = '';
+                
+                switch(categoria) {
+                    case 'hamburguesas':
+                        textoAMostrar = 'HAMBURGUESAS';
+                        break;
+                    case 'especialidades-mar':
+                        textoAMostrar = 'ESPECIALIDADES DEL MAR';
+                        break;
+                    case 'ahogados':
+                        textoAMostrar = 'AHOGADOS, TACOS, BURROS, COSTRAS & CHILLAKILLERS';
+                        break;
+                    case 'snacks':
+                        textoAMostrar = 'ALITAS, SNACK PACK & OTROS SNACKS';
+                        break;
+                    case 'platillos':
+                        textoAMostrar = 'PLATILLOS & BOTANAS';
+                        break;
+                    case 'micheladas':
+                        textoAMostrar = 'MICHELADAS';
+                        break;
+                    case 'bebidas':
+                        textoAMostrar = 'BEBIDAS, FRAPPES & COCTELERÍA';
+                        break;
+                    case 'cervezas':
+                        textoAMostrar = 'CERVEZAS, CAMARONCHELAS, CLAMATITOS Y CHAROLAS';
+                        break;
+                    case 'postres':
+                        textoAMostrar = 'POSTRES';
+                        break;
+                    default:
+                        textoAMostrar = 'Nuestro Menu';
+                }
+                
+                $('#categoria-hover-text').text(textoAMostrar);
+                
+                $('.categoria-hover-line').css('width', '150px');
+            },
+            function() {
+                $('#categoria-hover-text').text('Nuestro Menu');
+                
+                $('.categoria-hover-line').css('width', '0');
+            }
+        );
+        if(window.location.hash) {
+            var hash = window.location.hash;
+            if($(hash).length) {
+                mostrarSeccion(hash);
+                setTimeout(function() {
+                    $('html, body').animate({
+                        scrollTop: $('#menu-completo-contenedor').offset().top
+                    }, 800);
+                }, 100);
+            }
+        }
+    });
+    
+})(jQuery);
+</script>
+<script>
+function irAGaleria() {
+    let seccionVisible = null;
+    const secciones = document.querySelectorAll('.menu-carta-section');
+    
+    for (let i = 0; i < secciones.length; i++) {
+        const estilo = window.getComputedStyle(secciones[i]);
+        if (estilo.display !== 'none') {
+            seccionVisible = secciones[i];
+            break;
+        }
+    }
+
+    if (seccionVisible && seccionVisible.id) {
+        const idSeccion = seccionVisible.id;
+        let urlDestino = 'galeria.html';
+        
+        switch (idSeccion) {
+            case 'menu-hamburguesas':
+                urlDestino = 'galeria-hamburguesas.html';
+                break;
+            case 'menu-especialidades-mar':
+                urlDestino = 'galeria-mariscos.html';
+                break;
+            case 'menu-ahogados':
+                urlDestino = 'galeria-ahogados.html';
+                break;
+            case 'menu-snacks':
+                urlDestino = 'galeria-snacks.html';
+                break;
+            case 'menu-platillos':
+                urlDestino = 'galeria-platillos.html';
+                break;
+            case 'menu-micheladas':
+                urlDestino = 'galeria-micheladas.html';
+                break;
+            case 'menu-bebidas':
+                urlDestino = 'galeria-bebidas.html';
+                break;
+            case 'menu-cervezas':
+                urlDestino = 'galeria-cervezas.html';
+                break;
+            case 'menu-postres':
+                urlDestino = 'galeria-postres.html';
+                break;
+            default:
+                urlDestino = 'galeria.html';
+        }
+        
+        window.location.href = urlDestino;
+    } else {
+        console.log("No se encontró una sección visible");
+        alert("Por favor, selecciona una categoría del menú primero.");
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const linkGaleria = document.getElementById('link-ver-galeria');
+    if (linkGaleria) {
+        linkGaleria.addEventListener('click', function(e) {
+            e.preventDefault(); 
+            irAGaleria();
+        });
+    }
+});
+</script>
+</body>
+
+</html>

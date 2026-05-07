@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0">
+    <title>Preparaciones - Tio Chelo</title>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link id="changeable-colors" rel="stylesheet" href="css/colors/orange.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="js/modernizer.js"></script>
+    <style>
+        /* Estilos específicos para la galería de videos */
+        .gallery-section {
+            padding: 120px 0 60px;
+            background-color: #f8f9fa;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .gallery-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1;
+        }
+        
+        .gallery-section .container {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .fondo-hamburguesas { background-image: url('images/preparacionesfondo.png'); }
+        
+        .back-to-menu {
+            position: relative;
+            z-index: 2;
+            margin-top: 90px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        
+        .back-to-menu .btn-back {
+            display: inline-flex;
+            align-items: center;
+            background-color: #e75b1e;
+            color: white;
+            font-weight: 700;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 12px 25px;
+            border-radius: 50px;
+            border: 2px solid #e75b1e;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .back-to-menu .btn-back i {
+            margin-right: 10px;
+            font-size: 16px;
+            transition: transform 0.3s ease;
+        }
+        
+        .back-to-menu .btn-back:hover {
+            background-color: transparent;
+            color: #e75b1e;
+            transform: translateX(-5px);
+        }
+        
+        .gallery-title {
+            font-family: 'nautilus_pompiliusregular', cursive;
+            font-size: 48px;
+            color: #e75b1e;
+            text-align: center;
+            margin-bottom: 50px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            cursor: pointer;
+            height: 250px;
+            border: 3px solid transparent;
+            transition: all 0.3s ease;
+            background-color: #000;
+        }
+        
+        .gallery-item:hover {
+            border-color: #e75b1e;
+            transform: scale(1.02);
+        }
+        
+        .gallery-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            pointer-events: none;
+        }
+        
+        .gallery-item:hover video {
+            transform: scale(1.1);
+        }
+        
+        .gallery-item .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            color: white;
+            padding: 20px 15px 15px;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+        
+        .gallery-item:hover .overlay {
+            transform: translateY(0);
+        }
+        
+        .gallery-item .overlay h4 {
+            margin: 0 0 5px;
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+        }
+        
+        .gallery-modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.95);
+            text-align: center;
+        }
+        
+        .modal-content {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+            max-width: 90%;
+            max-height: 80%;
+            margin: 0 auto;
+        }
+        
+        .modal-video {
+            width: 100%;
+            max-width: 1000px;
+            max-height: 70vh;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(231, 91, 30, 0.3);
+            border: 3px solid #e75b1e;
+            background: black;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 30px;
+            right: 50px;
+            color: #f1f1f1;
+            font-size: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            z-index: 10000;
+        }
+        
+        .close-modal:hover {
+            color: #e75b1e;
+            transform: rotate(90deg);
+        }
+        
+        .modal-caption {
+            color: white;
+            font-size: 20px;
+            margin-top: 20px;
+            font-weight: 500;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .gallery-counter {
+            color: white;
+            font-size: 16px;
+            margin-top: 15px;
+            opacity: 0.8;
+        }
+        
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+            padding: 20px;
+            transition: 0.3s;
+            z-index: 10000;
+        }
+        
+        .modal-nav.prev {
+            left: 30px;
+        }
+        
+        .modal-nav.next {
+            right: 30px;
+        }
+        
+        .modal-nav:hover {
+            color: #e75b1e;
+            transform: translateY(-50%) scale(1.2);
+        }
+        
+        @media (max-width: 768px) {
+            .gallery-title { font-size: 36px; }
+            .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px; }
+            .close-modal { top: 20px; right: 20px; font-size: 40px; }
+            .modal-nav { font-size: 30px; }
+            .modal-nav.prev { left: 10px; }
+            .modal-nav.next { right: 10px; }
+            .modal-video { width: 95%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <div id="site-header">
+        <header id="header" class="header-block-top">
+            <div class="container">
+                <div class="row">
+                    <div class="main-menu">
+                        <nav class="navbar navbar-default" id="mainNav">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <div class="logo">
+                                    <a class="navbar-brand js-scroll-trigger logo-header" href="#">
+                                        <img src="images/LOGO.png" alt="Logo Tío Chelo">
+                                    </a>
+                                </div>
+                            </div>
+                            <div id="navbar" class="navbar-collapse collapse">
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li><a href="index.html">Inicio</a></li>
+                                    <li class="active"><a href="preparaciones.html">Preparaciones</a></li>
+                                    <li><a href="menu.html">Menú</a></li>
+                                    <li><a href="contacto.html">Contacto</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <!-- ===== SECCIÓN DE GALERÍA DE VIDEOS ===== -->
+    <section class="gallery-section fondo-hamburguesas">
+        <div class="container">
+            <h2 class="gallery-title">Nuestras preparaciones</h2>
+            
+            <div class="back-to-menu">
+                <a href="index.html" class="btn-back">
+                    <i class="fa fa-arrow-left"></i> Regresar a Inicio
+                </a>
+            </div>
+            
+            <div class="gallery-grid" id="gallery-grid">
+                <!-- Ítem 1 - Video de tres platillos -->
+                <div class="gallery-item" data-video-index="0">
+                    <video preload="metadata" poster="images/MINIATURA 3 PLATILLOS.png">
+                        <source src="images/3 PLATILLOS QUE SI O SI TIENES QUE PROBAR.mp4" type="video/mp4">
+                        Tu navegador no soporta video.
+                    </video>
+                    <div class="overlay">
+                        <h4>¡Tres Platillos que si o si tienes que probar!</h4>
+                    </div>
+                </div>
+                <!-- Ítem 2 - Video atun escabache -->
+                <div class="gallery-item" data-video-index="1">
+                    <video loop preload="metadata" poster="images/MINIATURA ATUN A LA ESCABECHE.png">
+                        
+                        <source src="images/ATUN A LA ESCABECHE FINAL.mp4" type="video/mp4">
+                    </video>
+                    
+                    <div class="overlay">
+                        <h4>¡Atún al Escabache!</h4>
+                    </div>
+                </div>
+                <!-- Ítem 3 - Video Aguachile Negro -->
+                <div class="gallery-item" data-video-index="2">
+                    <video loop preload="metadata" poster="images/MINIATURA AGUACHILE NEGRO.png">
+                        <source src="images/aguachile negro.mp4" type="video/mp4">
+                    </video>
+                    <div class="overlay">
+                        <h4>¡Aguachile Negro!</h4>
+                    </div>
+                </div>
+                <!-- Ítem 4 - Video Hot Dog Argentino -->
+                <div class="gallery-item" data-video-index="3">
+                    <video loop preload="metadata" poster="images/MINIATURA HOT DOG.png">
+                        <source src="images/HOT DOG ARGENTINO FINAL2.mp4" type="video/mp4">
+                    </video>
+                    <div class="overlay">
+                        <h4>¡Hot Dog Argentino!</h4>
+                    </div>
+                </div>
+                <!-- Ítem 5 - Video Chicharrón -->
+                <div class="gallery-item" data-video-index="4">
+                    <video loop preload="metadata" poster="images/MINIATURA CHICHARRON.png">
+                        <source src="images/CHICHARRON.mp4" type="video/mp4">
+                    </video>
+                    <div class="overlay">
+                        <h4>¡Chicharrón!</h4>
+                    </div>
+                </div>
+                
+                <!-- Ítem 6 - Video Jardínera -->
+                <div class="gallery-item" data-video-index="5">
+                    <video loop preload="metadata" poster="images/MINIATURA JARDINERA.png">
+                        <source src="images/Jardineravideo.mp4" type="video/mp4">
+                    </video>
+                    <div class="overlay">
+                        <h4>¡Jardínera!</h4>
+                    </div>
+                </div>
+                
+                <!-- Ítem 7 - Video Cherry soda -->
+                 <div class="gallery-item" data-video-index="6">
+                    <video loop preload="metadata" poster="images/MINIATURA CHERRY.png">
+                        <source src="images/CHERRY SODAvideo.mp4" type="video/mp4">
+                    </video>
+                    <div class="overlay">
+                        <h4>¡Cherry Soda!</h4>
+                    </div>
+                </div>
+                
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <div id="footer" class="footer-box">
+        <div id="copyright" class="copyright-main">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <h6 class="copy-title"> Copyright &copy; 2026 ETHER AUDIOVISUAL </h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== MODAL REPRODUCIR VIDEO  ===== -->
+    <div id="modal-galeria" class="gallery-modal">
+        <span class="close-modal" onclick="cerrarModal()">&times;</span>
+        <div class="modal-nav prev" onclick="cambiarVideo(-1)">&#10094;</div>
+        <div class="modal-nav next" onclick="cambiarVideo(1)">&#10095;</div>
+        <div class="modal-content">
+            <video id="modal-video" class="modal-video" controls>
+                <source src="" type="video/mp4">
+                Tu navegador no soporta video.
+            </video>
+            <div id="modal-caption" class="modal-caption"></div>
+            <div id="modal-counter" class="gallery-counter"></div>
+        </div>
+    </div>
+
+    <script src="js/all.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/custom.js"></script>
+    
+    <script>
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        let currentIndex = 0;
+        const videos = [];
+
+        galleryItems.forEach((item, index) => {
+            const videoElem = item.querySelector('video');
+            const source = videoElem ? videoElem.querySelector('source') : null;
+            const titleElem = item.querySelector('.overlay h4');
+            videos.push({
+                src: source ? source.src : '',
+                title: titleElem ? titleElem.innerText : 'Video',
+                poster: videoElem ? videoElem.poster : ''
+            });
+        });
+
+        function abrirModal(index) {
+            currentIndex = index;
+            const modal = document.getElementById('modal-galeria');
+            const modalVideo = document.getElementById('modal-video');
+            const captionText = document.getElementById('modal-caption');
+            const counterText = document.getElementById('modal-counter');
+            
+            // Asignar fuente y poster
+            modalVideo.src = videos[currentIndex].src;
+            modalVideo.poster = videos[currentIndex].poster || '';
+            modalVideo.load();  
+            
+            // Mostrar modal antes de intentar reproducir (evita errores)
+            modal.style.display = "block";
+            
+            // Intentar reproducir con sonido
+            const playPromise = modalVideo.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.log("Reproducción automática bloqueada, el usuario debe hacer clic en el botón play.", error);
+                 
+                });
+            }
+            
+            captionText.innerHTML = `<strong>${videos[currentIndex].title}</strong>`;
+            counterText.innerHTML = `Video ${currentIndex + 1} de ${videos.length}`;
+        }
+        
+        function cambiarVideo(direccion) {
+            const modalVideo = document.getElementById('modal-video');
+            modalVideo.pause();
+            currentIndex = (currentIndex + direccion + videos.length) % videos.length;
+            
+            modalVideo.src = videos[currentIndex].src;
+            modalVideo.poster = videos[currentIndex].poster || '';
+            modalVideo.load();
+            
+            // Reproducir automáticamente al cambiar (también dentro de interacción del usuario)
+            const playPromise = modalVideo.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(e => console.log("No se pudo reproducir automáticamente:", e));
+            }
+            
+            document.getElementById('modal-caption').innerHTML = `<strong>${videos[currentIndex].title}</strong>`;
+            document.getElementById('modal-counter').innerHTML = `Video ${currentIndex + 1} de ${videos.length}`;
+        }
+        
+        function cerrarModal() {
+            const modalVideo = document.getElementById('modal-video');
+            modalVideo.pause();
+            modalVideo.src = '';
+            document.getElementById('modal-galeria').style.display = "none";
+        }
+        
+        // Asignar eventos de clic a cada miniatura
+        galleryItems.forEach((item, idx) => {
+            item.addEventListener('click', () => abrirModal(idx));
+        });
+        
+        // Navegación con teclado
+        document.addEventListener('keydown', function(event) {
+            const modal = document.getElementById('modal-galeria');
+            if (modal.style.display === "block") {
+                if (event.key === "Escape") cerrarModal();
+                if (event.key === "ArrowLeft") cambiarVideo(-1);
+                if (event.key === "ArrowRight") cambiarVideo(1);
+            }
+        });
+        
+        // Cerrar modal al hacer clic fuera del contenido
+        document.getElementById('modal-galeria').addEventListener('click', function(e) {
+            if (e.target === this) cerrarModal();
+        });
+    </script>
+</body>
+</html>
